@@ -10,8 +10,9 @@ Vagrant.configure(2) do |config|
   # Kubernetes Master Server
   config.vm.define "kmaster" do |node|
   
-    node.vm.box               = "debian/bullseye64"
+    node.vm.box               = "generic/debian11"
     node.vm.box_check_update  = false
+    node.vm.box_version       = "3.6.12"
     node.vm.hostname          = "kmaster.lab.local"
 
     node.vm.network "private_network", ip: "172.16.16.100"
@@ -21,6 +22,7 @@ Vagrant.configure(2) do |config|
       v.memory  = 2048
       v.cpus    =  2
     end
+
   
     node.vm.provider :libvirt do |v|
       v.memory  = 2048
@@ -40,8 +42,9 @@ Vagrant.configure(2) do |config|
 
     config.vm.define "kworker#{i}" do |node|
 
-      node.vm.box               = "debian/bullseye64"
+      node.vm.box               = "generic/debian11"
       node.vm.box_check_update  = false
+      node.vm.box_version       = "3.6.12"
       node.vm.hostname          = "kworker#{i}.lab.local"
 
       node.vm.network "private_network", ip: "172.16.16.10#{i}"
