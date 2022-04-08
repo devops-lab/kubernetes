@@ -1,0 +1,12 @@
+# https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner/tree/master/deploy
+
+#kubectl apply -f rbac.yaml
+#kubectl apply -f class.yaml
+#kubectl create -f deployment.yaml
+
+# traefik
+# https://doc.traefik.io/traefik/getting-started/install-traefik/#use-the-helm-chart
+
+# helm show values traefik > /tmp/traefik.yaml
+# helm install traefik traefik/traefik --values /tmp/traefik.yaml -n traefik --create-namespac
+# kubectl -n traefik port-forward pod/traefik-5cccb84566-f2c6p  --address 0.0.0.0  9000:9000

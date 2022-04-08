@@ -1,0 +1,31 @@
+# NFS server install and setup (IP address: 172.16.16.100)
+
+
+apt install nfs-server
+
+mkdir /tmp/nfs/
+chown nobody: /tmp/nfs/
+echo "/tmp/nfs                     *(rw,sync,no_subtree_check,no_root_squash,no_all_squash,insecure)" >> /etc/exports
+exportfs -rav
+
+systemctl start nfs-server
+systemctl status nfs-server
+
+# check server side
+showmount -e localhost
+
+
+
+
+
+# Client  setup
+apt install nfs-common
+mount -t nfs 172.16.16.100:/tmp/nfs /mnt
+
+umount /mnt/
+
+
+
+
+
+
